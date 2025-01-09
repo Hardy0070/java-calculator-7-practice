@@ -10,7 +10,9 @@ class DelimiterTest {
 
     Delimiter delimiter = new Delimiter();
 
-    String[] separatedValue = delimiter.separator("1,2:3");
+    String standardDelimiter = delimiter.makeStandardDelimiter(delimiter.findCustomDelimiter("1,2:3"));
+
+    String[] separatedValue = delimiter.separator("1,2:3", standardDelimiter);
 
 
     @DisplayName("기본 구분자로 문자열 값을 구분한다.")
@@ -43,9 +45,9 @@ class DelimiterTest {
     @DisplayName("2글자 이상인 커스텀 구분자 찾기")
     @Test
     void findCustomDelimiters() {
-        String customDelimiter = delimiter.findCustomDelimiter("//;;\n1;2;3");
+        String customDelimiter = delimiter.findCustomDelimiter("//;;;\n1;2;3");
 
-        Assertions.assertThat(customDelimiter).isEqualTo(";;");
+        Assertions.assertThat(customDelimiter).isEqualTo(";;;");
     }
 
     @DisplayName("커스텀 구분자가 없을 때 null을 리턴한다.")
