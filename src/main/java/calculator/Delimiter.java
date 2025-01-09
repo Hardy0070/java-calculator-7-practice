@@ -1,4 +1,8 @@
 package calculator;
 
-public class Delimeter {
+public class Delimiter {
+
+    public String[] separator(String userInputValue) {
+        return userInputValue.split(",|:");
+    }
 }
