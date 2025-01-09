@@ -8,12 +8,28 @@ import org.junit.jupiter.api.Test;
 
 class DelimiterTest {
 
+    Delimiter delimiter = new Delimiter();
+
+    String[] separatedValue = delimiter.separator("1,2:3");
+
+
     @DisplayName("기본 구분자로 문자열 값을 구분한다.")
     @Test
     void separate() {
-        Delimiter delimiter = new Delimiter();
 
-        Assertions.assertThat(delimiter.separator("1,2:3")).isEqualTo(new String[]{"1","2","3"});
+        Assertions.assertThat(separatedValue).isEqualTo(new String[]{"1", "2", "3"});
+    }
+
+    @DisplayName("구분된 문자를 정수로 변환 후 모두 다 더한다.")
+    @Test
+    void addAllNumbers() {
+        Assertions.assertThat(delimiter.addNumbers(separatedValue)).isEqualTo(6);
+    }
+
+    @DisplayName("틀린 값 테스트")
+    @Test
+    void addAllNumbersWrongAnswer() {
+        Assertions.assertThat(delimiter.addNumbers(separatedValue)).isNotEqualTo("123");
     }
 
 }
