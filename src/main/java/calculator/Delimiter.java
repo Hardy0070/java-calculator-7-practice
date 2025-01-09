@@ -15,4 +15,16 @@ public class Delimiter {
 
         return addedNumber;
     }
+
+    public String findCustomDelimiter(String userInputValue) {
+
+        if (userInputValue.contains("//")) {
+            String endOfCustomDelimiter = "\n";
+            int delimiterIndex = userInputValue.indexOf(endOfCustomDelimiter);
+
+            return userInputValue.substring(2, delimiterIndex);
+        }
+
+        return null;
+    }
 }

@@ -32,4 +32,28 @@ class DelimiterTest {
         Assertions.assertThat(delimiter.addNumbers(separatedValue)).isNotEqualTo("123");
     }
 
+    @DisplayName("커스텀 구분자 찾기")
+    @Test
+    void findCustomDelimiter() {
+        String customDelimiter = delimiter.findCustomDelimiter("//;\n1;2;3");
+
+        Assertions.assertThat(customDelimiter).isEqualTo(";");
+    }
+
+    @DisplayName("2글자 이상인 커스텀 구분자 찾기")
+    @Test
+    void findCustomDelimiters() {
+        String customDelimiter = delimiter.findCustomDelimiter("//;;\n1;2;3");
+
+        Assertions.assertThat(customDelimiter).isEqualTo(";;");
+    }
+
+    @DisplayName("커스텀 구분자가 없을 때 null을 리턴한다.")
+    @Test
+    void findNull() {
+        String noCustomDelimiter = delimiter.findCustomDelimiter("1,2:3");
+
+        Assertions.assertThat(noCustomDelimiter).isNull();
+    }
+
 }
