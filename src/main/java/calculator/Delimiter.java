@@ -34,7 +34,7 @@ public class Delimiter {
     public String findCustomDelimiter(String userInputValue) {
 
         if (userInputValue.contains("//")) {
-            String endOfCustomDelimiter = "\n";
+            String endOfCustomDelimiter = "\\n";
             int endOfDelimiterIndex = userInputValue.indexOf(endOfCustomDelimiter); // \ <-의 인덱스를 반환한다.
 
             return userInputValue.substring(2, endOfDelimiterIndex);
@@ -46,10 +46,10 @@ public class Delimiter {
     public String findUserInputValue(String userInputValue) {
 
         if (userInputValue.contains("//")) {
-            String endOfCustomDelimiter = "\n";
-            int endOfDelimiterIndex = userInputValue.indexOf(endOfCustomDelimiter); // \ <-의 인덱스를 반환한다.
+            String endOfCustomDelimiter = "\\n";
+            int endOfDelimiterIndex = userInputValue.indexOf(endOfCustomDelimiter);
 
-            return userInputValue.substring(endOfDelimiterIndex, endOfDelimiterIndex+1);
+            return userInputValue.substring(endOfDelimiterIndex + 2);
         }
 
         return userInputValue;

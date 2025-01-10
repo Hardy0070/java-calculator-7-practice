@@ -18,5 +18,6 @@ public class Application {
         int result = delimiter.addNumbers(separatedNumbers);
 
         System.out.println("결과 : " + result);
+
     }
 }
