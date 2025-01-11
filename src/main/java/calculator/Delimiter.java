@@ -17,8 +17,8 @@ public class Delimiter {
         return standardDelimiter;
     }
 
-    public String[] separator(String userInputValueExceptDelimiter, String standardDelimiter) {
-        return userInputValueExceptDelimiter.split(standardDelimiter); // 파라미터로 받은 커스텀 구분자 정규식에 추가하기
+    public String[] separator(String userInputNumbers, String standardDelimiter) {
+        return userInputNumbers.split(standardDelimiter); // 파라미터로 받은 커스텀 구분자 정규식에 추가하기
     }
 
     public int addNumbers(String[] separatedValues) {
@@ -43,7 +43,7 @@ public class Delimiter {
         return null;
     }
 
-    public String findUserInputValue(String userInputValue) {
+    public String findUserInputNumbers(String userInputValue) {
 
         if (userInputValue.contains("//")) {
             String endOfCustomDelimiter = "\\n";
