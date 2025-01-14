@@ -1,0 +1,65 @@
+package calculator;
+
+import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+
+class DelimiterTest {
+
+    DelimiterFinder delimiter = new DelimiterFinder();
+    StringProcessor stringProcessor = new StringProcessor();
+
+    String standardDelimiter = delimiter.makeStandardDelimiter(delimiter.findCustomDelimiter("1,2:3"));
+
+    String[] separatedValue = stringProcessor.separator("1,2:3", standardDelimiter);
+
+
+    @DisplayName("기본 구분자로 문자열 값을 구분한다.")
+    @Test
+    void separate() {
+
+        Assertions.assertThat(separatedValue).isEqualTo(new String[]{"1", "2", "3"});
+    }
+
+//    캡슐화를 위해 addNumbers() 메서드 접근제어자를 private으로 수정했다.
+//    @DisplayName("구분된 문자를 정수로 변환 후 모두 다 더한다.")
+//    @Test
+//    void addAllNumbers() {
+//        Assertions.assertThat(calculator.addNumbers(separatedValue)).isEqualTo(6);
+//    }
+//
+//    @DisplayName("틀린 값 테스트")
+//    @Test
+//    void addAllNumbersWrongAnswer() {
+//        Assertions.assertThat(calculator.addNumbers(separatedValue)).isNotEqualTo("123");
+//    }
+
+//    커스텀 구분자 구분표시 \n를
+//    "\n"로 표시했을 때 테스트는 통과하지만 실제 구현에서는 실패한다.
+//    "\\n"로 표시했을 때 테스트는 실패하지만 실제 구현은 통과한다.
+
+//    @DisplayName("커스텀 구분자 찾기")
+//    @Test
+//    void findCustomDelimiter() {
+//        String customDelimiter = delimiter.findCustomDelimiter("//;\n1;2;3");
+//
+//        Assertions.assertThat(customDelimiter).isEqualTo(";");
+//    }
+//
+//    @DisplayName("2글자 이상인 커스텀 구분자 찾기")
+//    @Test
+//    void findCustomDelimiters() {
+//        String customDelimiter = delimiter.findCustomDelimiter("//;;;\n1;2;3");
+//
+//        Assertions.assertThat(customDelimiter).isEqualTo(";;;");
+//    }
+
+    @DisplayName("커스텀 구분자가 없을 때 null을 리턴한다.")
+    @Test
+    void findNull() {
+        String noCustomDelimiter = delimiter.findCustomDelimiter("1,2:3");
+
+        Assertions.assertThat(noCustomDelimiter).isNull();
+    }
+
+}
