@@ -1,7 +1,5 @@
 package calculator;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -19,4 +17,5 @@ class DelimiterFinderTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("[ERROR] 정규표현식에 사용되는 기호는 입력할 수 없습니다.");
     }
+
 }

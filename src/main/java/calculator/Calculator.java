@@ -7,7 +7,7 @@ public class Calculator {
     StringProcessor stringProcessor = new StringProcessor();
     OutputHandler outputHandler = new OutputHandler();
 
-    public int addNumbers(String[] separatedValues) {
+    private int addNumbers(String[] separatedValues) {
         int addedNumber = 0;
 
         for (String separatedValue : separatedValues) {

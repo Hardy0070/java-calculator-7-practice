@@ -8,7 +8,6 @@ class DelimiterTest {
 
     DelimiterFinder delimiter = new DelimiterFinder();
     StringProcessor stringProcessor = new StringProcessor();
-    Calculator calculator = new Calculator();
 
     String standardDelimiter = delimiter.makeStandardDelimiter(delimiter.findCustomDelimiter("1,2:3"));
 
@@ -22,17 +21,18 @@ class DelimiterTest {
         Assertions.assertThat(separatedValue).isEqualTo(new String[]{"1", "2", "3"});
     }
 
-    @DisplayName("구분된 문자를 정수로 변환 후 모두 다 더한다.")
-    @Test
-    void addAllNumbers() {
-        Assertions.assertThat(calculator.addNumbers(separatedValue)).isEqualTo(6);
-    }
-
-    @DisplayName("틀린 값 테스트")
-    @Test
-    void addAllNumbersWrongAnswer() {
-        Assertions.assertThat(calculator.addNumbers(separatedValue)).isNotEqualTo("123");
-    }
+//    캡슐화를 위해 addNumbers() 메서드 접근제어자를 private으로 수정했다.
+//    @DisplayName("구분된 문자를 정수로 변환 후 모두 다 더한다.")
+//    @Test
+//    void addAllNumbers() {
+//        Assertions.assertThat(calculator.addNumbers(separatedValue)).isEqualTo(6);
+//    }
+//
+//    @DisplayName("틀린 값 테스트")
+//    @Test
+//    void addAllNumbersWrongAnswer() {
+//        Assertions.assertThat(calculator.addNumbers(separatedValue)).isNotEqualTo("123");
+//    }
 
 //    커스텀 구분자 구분표시 \n를
 //    "\n"로 표시했을 때 테스트는 통과하지만 실제 구현에서는 실패한다.
