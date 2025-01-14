@@ -24,14 +24,14 @@ public class StringProcessor {
         return userInputValue;
     }
 
-    public void validate(String number) {
-        validateEmpty(number);
-        validateNegativeNumber(number);
+    private void validate(String number) {
+        validateNegativeNumber(validateEmpty(number));
     }
 
     private String validateEmpty(String number) {
         if (number == "") {
             number = "0";
+
             return number;
         }
         return number;
