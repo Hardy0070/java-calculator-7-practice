@@ -2,10 +2,13 @@ package calculator;
 
 public class DelimiterFinder {
 
+    // 정규식 패턴을 만드는 애가 수정이 필요하다.
     public String makeStandardDelimiter(String customDelimiter) {
         String standardDelimiter = ",|:";
 
-        standardDelimiter += "|" + customDelimiter;
+        if (customDelimiter != null) {
+            standardDelimiter += "|" + customDelimiter;
+        }
 
         return standardDelimiter;
     }
@@ -21,7 +24,6 @@ public class DelimiterFinder {
 
         return null;
     }
-
 
 
 }

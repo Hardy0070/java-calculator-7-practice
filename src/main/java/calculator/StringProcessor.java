@@ -3,7 +3,13 @@ package calculator;
 public class StringProcessor {
 
     public String[] separator(String userInputNumbers, String standardDelimiter) {
-        return userInputNumbers.split(standardDelimiter); // 파라미터로 받은 커스텀 구분자 정규식에 추가하기
+        String[] numbers = userInputNumbers.split(standardDelimiter);
+
+        for (String number : numbers) {
+            validate(number);
+        }
+
+        return userInputNumbers.split(standardDelimiter);
     }
 
     public String findUserInputNumbers(String userInputValue) {
@@ -16,6 +22,23 @@ public class StringProcessor {
         }
 
         return userInputValue;
+    }
+
+    public void validate(String number) {
+        validateEmpty(number);
+    }
+
+    private void validateEmpty(String number) {
+        if (number == "") {
+            number = "0";
+        }
+        validateNegativeNumber(number);
+    }
+
+    private void validateNegativeNumber(String number) {
+        if (Integer.parseInt(number) < 0) {
+            throw new IllegalArgumentException("[ERROR] 음수는 입력할 수 없습니다.");
+        }
     }
 
 }

@@ -11,23 +11,28 @@ public class Calculator {
         int addedNumber = 0;
 
         for (String separatedValue : separatedValues) {
-            addedNumber += Integer.parseInt(separatedValue);
+            addedNumber += emptyInputValue(separatedValue);
         }
 
         return addedNumber;
     }
 
+    // 빈 배열에 0을 리턴하는 행동
+    private int emptyInputValue(String separatedValue) {
+
+        if (separatedValue.equals("")) {
+            return 0;
+        }
+        return Integer.parseInt(separatedValue);
+    }
+
     public void calculate() {
+
         String userInputValue = inputHandler.getUserInputValue();
-
         String customDelimiter = delimiterFinder.findCustomDelimiter(userInputValue);
-
         String userInputNumbers = stringProcessor.findUserInputNumbers(userInputValue);
-
         String standardDelimiter = delimiterFinder.makeStandardDelimiter(customDelimiter);
-
         String[] separatedNumbers = stringProcessor.separator(userInputNumbers, standardDelimiter);
-
         int result = addNumbers(separatedNumbers);
 
         outputHandler.printResult(result);
