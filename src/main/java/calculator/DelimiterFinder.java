@@ -16,14 +16,28 @@ public class DelimiterFinder {
     public String findCustomDelimiter(String userInputValue) {
 
         if (userInputValue.contains("//")) {
-            String endOfCustomDelimiter = "\\n";
-            int endOfDelimiterIndex = userInputValue.indexOf(endOfCustomDelimiter); // \ <-의 인덱스를 반환한다.
+            String substring = substringUserValue(userInputValue);
 
-            return userInputValue.substring(2, endOfDelimiterIndex);
+            validateRegexSign(substring);
+            return substring;
         }
 
         return null;
     }
 
+    private String substringUserValue(String userInputValue) {
+        String endOfCustomDelimiter = "\\n";
+        int endOfDelimiterIndex = userInputValue.indexOf(endOfCustomDelimiter);
+
+        return userInputValue.substring(2, endOfDelimiterIndex);
+    }
+
+    private void validateRegexSign(String number) {
+        String regexSigns = "\\.*+?^${}[]()|";
+
+        if (regexSigns.contains(number)) {
+            throw new IllegalArgumentException("[ERROR] 정규표현식에 사용되는 기호는 입력할 수 없습니다.");
+        }
+    }
 
 }

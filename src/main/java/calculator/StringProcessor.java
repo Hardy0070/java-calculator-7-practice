@@ -26,13 +26,15 @@ public class StringProcessor {
 
     public void validate(String number) {
         validateEmpty(number);
+        validateNegativeNumber(number);
     }
 
-    private void validateEmpty(String number) {
+    private String validateEmpty(String number) {
         if (number == "") {
             number = "0";
+            return number;
         }
-        validateNegativeNumber(number);
+        return number;
     }
 
     private void validateNegativeNumber(String number) {

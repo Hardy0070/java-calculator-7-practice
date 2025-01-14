@@ -17,7 +17,6 @@ public class Calculator {
         return addedNumber;
     }
 
-    // 빈 배열에 0을 리턴하는 행동
     private int emptyInputValue(String separatedValue) {
 
         if (separatedValue.equals("")) {
